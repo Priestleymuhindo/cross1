@@ -1,0 +1,1 @@
+"0","lm_fit <- lm_mod %>% fit(largeur~taille*regime_alim,data=urchins_train_d)"

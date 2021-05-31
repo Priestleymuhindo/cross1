@@ -1,0 +1,10 @@
+importation-de-données
+chargement-des-libraries
+importation-des-données
+visualisation-des-données
+partitionnement
+régression-linéaire
+entraînement-du-modèle
+partitionnement-réechantillonage
+cross-validation
+meilleurs-hyperparamètres

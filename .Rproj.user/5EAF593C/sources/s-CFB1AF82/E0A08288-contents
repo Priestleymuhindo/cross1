@@ -1,0 +1,58 @@
+# Régression Linéaire
+
+Nous allons utiliser un modèle linéaire avec variables qualitatives en mettant en exergue l'interraction car nous avons à la fois un prédicteur continu et un prédicteur catégoriel. Étant donné que les pentes semblent être différentes pour au moins deux des régimes d'alimentation, construisons un modèle qui permet des interactions bidirectionnelles. Spécifier une formule R avec nos variables de cette manière : Formule du modele et package
+
+```{r formule du modele,echo=TRUE,message=FALSE,warning=FALSE}
+
+lm_mod <- 
+  linear_reg() %>% # Précision du modèle
+  set_engine("lm") # Précision du package
+
+```
+
+## Entraînement du modèle
+
+```{r entrainement du modèle,echo=TRUE,message=FALSE,warning=FALSE}
+lm_fit <- lm_mod %>% fit(largeur~taille*regime_alim,data=urchins_train_d)
+```
+
+Affichons ces résultats sous forme de tiddy format:
+
+```{r tiddy data,echo=TRUE,message=FALSE,warning=FALSE}
+ tidy(lm_fit) %>%
+    datatable(rownames = FALSE, 
+            extensions = c("Scroller", "FixedColumns", "Buttons", "Select"), 
+            selection = "none",
+            options = list(
+              dom = "Bfrtip", 
+              # scroll :
+              scrollY = 200, scrollX = 400, scroller = TRUE,
+              # fixer les colonnes : 
+              fixedColumns = list(leftColumns = 1),
+              # selection :
+              select = list(style = 'os', items = 'row'),
+              buttons = c(
+                # enregistrements
+                'copy', 'csv', 'excel', 'pdf', 'print',
+                # visualisation des colonnes
+                'colvis',
+                # selection des elements
+                'selectAll', 'selectNone', 'selectRows', 'selectColumns', 'selectCells'
+              )
+            )
+  )
+
+```
+
+```{r graph des paramètres,echo=TRUE,message=FALSE,warning=FALSE}
+tidy(lm_fit) %>% dwplot(whisker_args = list(color="black"),
+                        style = c("dotwhisker"),
+                        vline = geom_vline(xintercept = 0,
+                                           colour="green",linetype=3))+theme_bw()+theme(legend.position = "None")
+```
+
+Faisons une simulation en prédisant la largeur pour un oursin ayant une taille de 2O ml ayant à l'état initial un régime alimentaire initial,pauvre ou riche
+
+```{r simulations}
+
+```

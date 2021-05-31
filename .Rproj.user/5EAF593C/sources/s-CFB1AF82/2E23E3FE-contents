@@ -1,0 +1,8 @@
+# Partitionnement {#partitionnement}
+
+```{r partionnement}
+urchins_train <- initial_split(data=urchins,prop = 0.8)
+urchins_train_d <- training(urchins_train)
+urchins_test_d <- testing(urchins_train)
+```
+

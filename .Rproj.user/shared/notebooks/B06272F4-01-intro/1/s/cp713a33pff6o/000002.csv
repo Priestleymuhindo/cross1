@@ -1,0 +1,3 @@
+"0","urchins_train <- initial_split(data=urchins,prop = 0.8)"
+"0","urchins_train_d <- training(urchins_train)"
+"0","urchins_test_d <- testing(urchins_train)"
